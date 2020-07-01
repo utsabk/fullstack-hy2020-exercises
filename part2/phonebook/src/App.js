@@ -8,9 +8,10 @@ const App = () => {
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState('');
   const [newPhone, setNewPhone] = useState('');
+  const [filteredPersons, setFilteredPersons] = useState([])
 
   const fetchPersons = async () => {
-    const promise = axios.get('http://localhost:3001/persons');
+    const promise = await axios.get('http://localhost:3001/persons');
     const persons = promise.data;
     setPersons(persons);
   };
@@ -37,12 +38,11 @@ const App = () => {
   };
 
   const handleSearch = (event) => {
-    const personsToDisplay = persons.filter((person) =>
-      person.name.includes(event.target.value)
-    );
-    setPersons(personsToDisplay);
+    const personsToDisplay = persons.filter((person) => person.name.toLowerCase().includes(event.target.value.toLowerCase()))
+    setFilteredPersons(personsToDisplay);
   };
 
+  
   return (
     <div>
       <h2>Phonebook</h2>
@@ -56,7 +56,7 @@ const App = () => {
         handleNewPhone={handleNewPhone}
       />
       <h2>Numbers</h2>
-      <Persons persons={persons} />
+      {filteredPersons.length < 1 ? <Persons persons={persons} /> : <Persons persons={filteredPersons} /> }
     </div>
   );
 };
