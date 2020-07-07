@@ -1,16 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const Persons = ({ persons }) => {
-    return (
-      <ul>
-        {persons.map((person) => (
-          <li key={person.name}>
-            {person.name}
-            {person.phone}
-          </li>
-        ))}
-      </ul>
-    );
-  };
-  
-export default Persons  
+const Person = ({ person, onClickListner }) => {
+  return (
+    <li>
+      {person.name}, {person.phone} <button onClick={onClickListner}>delete</button>
+    </li>
+  );
+};
+
+export default Person;

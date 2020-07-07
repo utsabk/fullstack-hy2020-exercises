@@ -3,8 +3,8 @@ import React from 'react'
 const Filter = ({ handleSearch }) => {
     return (
       <>
-        <label>filter shown with</label>
-        <input onChange={handleSearch} />
+        <label htmlFor='searchInput'>Filter shown with</label>
+        <input id='searchInput' onChange={handleSearch} />
       </>
     );
   };

@@ -1,25 +1,22 @@
 import React from 'react'
 
 const PersonForm = ({
-    addPerson,
+    handleSubmit,
     newName,
     handleNewName,
     newPhone,
     handleNewPhone,
   }) => {
     return (
-      <form onSubmit={addPerson}>
+      <form onSubmit={handleSubmit}>
         <div>
-          {' '}
-          name:
-          <input value={newName} onChange={handleNewName} />
+          <label htmlFor='nameInput'>name:</label><input type='text' id='nameInput' value={newName} onChange={handleNewName} />
         </div>
         <div>
-          number:
-          <input value={newPhone} onChange={handleNewPhone} />
+          <label htmlFor='phoneInput'> number:</label><input type='number' id='phoneInput' value={newPhone} onChange={handleNewPhone} />
         </div>
         <div>
-          <button type="submit">add</button>
+          <button type='submit'>add</button>
         </div>
       </form>
     );
